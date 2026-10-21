@@ -40,3 +40,37 @@ Here are six specific elements from the live site, what happens when a user enco
 
 ---
 
+## 2. Engineering Trade-offs
+
+### Trade-off 1: How to remember user settings (`localStorage` vs. URL parameters)
+* **The Problem**: When a user selects "USD" or "Annually" and refreshes the page, their choice needs to stay selected.
+* **Why I picked `localStorage`**:
+  * It keeps the browser URL clean (`index.html`) without messy query strings like `?billing=annual&currency=USD`.
+  * It works automatically offline and remembers the visitor's preference across browser tabs.
+  * *Safety check*: I wrapped it in a safe `try / catch` block. If someone visits in strict incognito mode where `localStorage` is blocked, the code catches it smoothly and defaults to monthly PKR without showing any errors in the console.
+
+---
+
+## 3. Payment Methods for Pakistani VPS Customers
+
+PKHosting's live site lists up to 8 different payment options. For this VPS line, I trimmed the list down to **4 realistic methods** that actually make sense for Pakistani developers and companies.
+
+### The 4 Methods I Kept (And Why):
+1. **JazzCash**:
+   * Over 44 million people in Pakistan use JazzCash. It is essential for freelancers, university students, and solo developers who want to quickly spin up a Starter (Rs 2,400) or Growth (Rs 4,800) server without needing a credit card.
+2. **EasyPaisa**:
+   * The second biggest mobile wallet in the country. Just like JazzCash, it allows instant, hassle-free checkout through a mobile phone.
+3. **1Link Direct Bank Transfer (IBFT)**:
+   * **Crucial for business customers.** Dedicated Core plans billed annually cost **Rs 195,000/year**. Mobile wallets have daily transaction limits (often Rs 25,000 to 50,000), so you cannot pay for a large server with a wallet. Companies and agencies need to pay via online bank transfer with standard NTN tax receipts.
+4. **Visa / Mastercard (Debit & Credit)**:
+   * Standard for domestic corporate cards, local bank debit cards enabled for online shopping, and international buyers paying in USD or GBP.
+
+### The 4 Methods I Dropped (And Why):
+1. **Dropped: PayPal**:
+   * PayPal does not officially exist in Pakistan. Showing a PayPal logo confuses local buyers and leads to support tickets asking how to use it. International clients already have card payments.
+2. **Dropped: Cash on Delivery (COD)**:
+   * COD works for shoes and clothes, but makes zero sense for cloud servers. VPS instances deploy automatically in under 60 seconds; you cannot wait 3 days for a courier rider to collect cash before turning on a server.
+3. **Dropped: Western Union / MoneyGram**:
+   * High fees, requires walking to a physical branch, and involves manual verification. It doesn't fit instant automated hosting.
+4. **Dropped: Cryptocurrency**:
+   * The State Bank of Pakistan has strict restrictions regarding cryptocurrency for local commercial transactions. Pakistani registered software houses cannot legally show crypto payments on their tax filings or company books.
