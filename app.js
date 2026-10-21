@@ -72,20 +72,20 @@
    */
   function calculatePlanPrices(monthlyPkr, billingPeriod, currency) {
     const rate = EXCHANGE_RATES[currency] || 1;
-    
+
     // Convert base monthly PKR into selected currency
     const monthlyInCurrency = monthlyPkr / rate;
 
     if (billingPeriod === 'annually') {
       // Per-month figure: (monthly * 10) / 12
       const perMonthPrice = (monthlyInCurrency * 10) / 12;
-      
+
       // Total annual amount billed: monthly * 10
       const annualTotal = monthlyInCurrency * 10;
-      
+
       // Computed Savings Amount: 2 full months free = monthly * 2
       const annualSavings = monthlyInCurrency * 2;
-      
+
       // Percentage savings: (2 / 12) * 100 = 16.666...%
       const savingsPercent = 16.7;
 
@@ -118,7 +118,7 @@
       const rounded = Math.round(amount);
       return rounded.toLocaleString('en-US'); // Inserts comma separators
     }
-    
+
     // USD and GBP require exactly 2 decimal places
     return amount.toLocaleString('en-US', {
       minimumFractionDigits: 2,
@@ -313,7 +313,7 @@
           state.billingPeriod = state.billingPeriod === 'monthly' ? 'annually' : 'monthly';
           persistState();
           render();
-          
+
           const activeBtn = state.billingPeriod === 'annually' ? annualBtn : monthlyBtn;
           if (activeBtn) activeBtn.focus();
         }
@@ -321,9 +321,7 @@
     }
   }
 
-  // -------------------------------------------------------------------------
-  // 7. App Bootstrap
-  // -------------------------------------------------------------------------
+
   function init() {
     loadPersistedState();
     setupEventListeners();
