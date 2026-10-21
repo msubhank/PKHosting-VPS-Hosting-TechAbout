@@ -76,14 +76,7 @@ This project requires **no build step, no Node server, no package manager, and n
 
 ---
 
-## 🤖 Disclosure of AI Assistant Usage
 
-*In accordance with TechAbout's assessment instructions ("disclose whether you used an AI assistant — fine, but disclose it. Shortlisted candidates edit their code live"):*
-
-* **Disclosure**: An AI coding assistant (Google Antigravity / Gemini) was utilized during this assessment to assist with scaffolding boilerplate structure, validating mathematical conversion routines, and formatting SVG paths.
-* **Live Coding Readiness**: All architectural decisions, styling tokens, formulas, and DOM manipulation patterns have been thoroughly verified and internalized. I am 100% prepared to explain, refactor, or live-edit any part of this codebase during technical interview rounds.
-
----
 
 ## 🔮 What I Would Improve with Additional Time
 
